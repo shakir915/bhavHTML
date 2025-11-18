@@ -2064,8 +2064,8 @@
                                 trades: null
                             };
 
-                            // Insert as first entry (unshift to add at beginning)
-                            yearData.dates.unshift(growwEntry);
+                            // Insert as last entry (push to add at end)
+                            yearData.dates.push(growwEntry);
 
                             // Update year totals
                             yearData.totals.tpl += growwNTPL;
@@ -2102,8 +2102,8 @@
                                 trades: null
                             };
 
-                            // Insert as first entry (unshift to add at beginning)
-                            yearData.dates.unshift(deltaExchangeEntry);
+                            // Insert as last entry (push to add at end)
+                            yearData.dates.push(deltaExchangeEntry);
 
                             // Update year totals
                             yearData.totals.tpl += deltaExchangeNTPL;
