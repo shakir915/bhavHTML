@@ -14,14 +14,16 @@ export const MatchedPositions = ({ matched, useFullFormat }: MatchedPositionsPro
   return (
     <div className="mb-4 border-2 border-gray-200 rounded-xl overflow-hidden transition-all hover:border-[#667eea] hover:shadow-lg">
       <div
-        className="bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white p-5 cursor-pointer flex flex-wrap justify-between items-center gap-4 hover:from-[#5568d3] hover:to-[#653a8b] transition-all"
+        className="bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white p-4 md:p-5 cursor-pointer hover:from-[#5568d3] hover:to-[#653a8b] transition-all"
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        <span className="text-xl font-bold">All Matched Positions ({matched.count})</span>
-        <div className="flex gap-4 text-sm ml-auto">
+        <div className="flex justify-between items-center mb-3">
+          <span className="text-lg md:text-xl font-bold">All Matched Positions ({matched.count})</span>
+          <div className={`expand-icon w-8 h-8 rounded-full bg-white/20 flex items-center justify-center transition-all hover:bg-white/35 hover:scale-110 flex-shrink-0 ${isExpanded ? 'active' : ''}`} />
+        </div>
+        <div className="flex flex-wrap gap-3 md:gap-4 text-sm justify-end">
           <SummaryItem label="Total P&L" value={matched.totalTradePnL} useFullFormat={useFullFormat} />
         </div>
-        <div className={`expand-icon w-8 h-8 rounded-full bg-white/20 flex items-center justify-center transition-all hover:bg-white/35 hover:scale-110 flex-shrink-0 ${isExpanded ? 'active' : ''}`} />
       </div>
 
       <div className={`accordion-content bg-gray-50 ${isExpanded ? 'active' : ''}`}>
