@@ -1,0 +1,27 @@
+export const formatCurrency = (amount: number | null | undefined, useFullFormat: boolean): string => {
+  if (amount === null || amount === undefined || isNaN(amount)) return '-';
+
+  const absAmount = Math.abs(amount);
+  const sign = amount < 0 ? '-' : '';
+
+  if (useFullFormat) {
+    return sign + absAmount.toLocaleString('en-IN', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
+  } else {
+    if (absAmount >= 10000000) {
+      return sign + (absAmount / 10000000).toFixed(2) + ' Cr';
+    } else if (absAmount >= 100000) {
+      return sign + (absAmount / 100000).toFixed(2) + ' L';
+    } else if (absAmount >= 1000) {
+      return sign + (absAmount / 1000).toFixed(2) + ' K';
+    } else {
+      return sign + absAmount.toFixed(2);
+    }
+  }
+};
+
+export const getPnLClass = (value: number): string => {
+  return value >= 0 ? 'text-green-500 font-bold' : 'text-red-500 font-bold';
+};
