@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { PnLData } from '../types';
 import { DATA_URL, trackIPData } from '../utils/firebase';
-import { Summary } from '../components/Summary';
 import { FiscalYear } from '../components/FiscalYear';
-import { MatchedPositions } from '../components/MatchedPositions';
-import { GrowwSummary } from '../components/GrowwSummary';
-import { DeltaSummary } from '../components/DeltaSummary';
 
 export const PnLDashboard = () => {
   const [pnlData, setPnlData] = useState<PnLData | null>(null);
@@ -33,20 +29,22 @@ export const PnLDashboard = () => {
     trackIPData('page_load');
   }, []);
 
+
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#667eea] to-[#764ba2] p-5 md:p-5">
       <div className="max-w-7xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
         {/* Header */}
         <div className="bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white p-6 md:p-8 text-center relative">
-          <h1 className="text-2xl md:text-4xl font-bold mb-2">Profit & Loss Statement DUMMY DATA</h1>
+          <h1 className="text-2xl md:text-4xl font-bold mb-2">Profit & Loss Statement</h1>
           <p className="text-base md:text-lg opacity-90">
             <a
-              href="https://linktr.ee/sndsanmdnsa"
+              href="https://linktr.ee/sudoku_trader"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white no-underline"
             >
-              https://linktr.ee/sndsanmdnsa (Verified P&L)
+              https://linktr.ee/sudoku_trader (Verified P&L)
             </a>
           </p>
 
@@ -87,25 +85,9 @@ export const PnLDashboard = () => {
 
           {pnlData && (
             <>
-              {pnlData.summary && (
-                <Summary summary={pnlData.summary} useFullFormat={useFullFormat} />
-              )}
-
-              {pnlData.fiscalYears?.map((fy, index) => (
+              {pnlData.map((fy, index) => (
                 <FiscalYear key={index} fiscalYear={fy} useFullFormat={useFullFormat} />
               ))}
-
-              {pnlData.allMatchedPositions && (
-                <MatchedPositions matched={pnlData.allMatchedPositions} useFullFormat={useFullFormat} />
-              )}
-
-              {pnlData.growwPnlSummary && (
-                <GrowwSummary groww={pnlData.growwPnlSummary} useFullFormat={useFullFormat} />
-              )}
-
-              {pnlData.deltaExchangePnlSummary && (
-                <DeltaSummary delta={pnlData.deltaExchangePnlSummary} useFullFormat={useFullFormat} />
-              )}
             </>
           )}
         </div>

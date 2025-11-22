@@ -1,82 +1,32 @@
 export interface Trade {
-  symbol: string;
-  type: 'Intraday' | 'Sell' | 'Expired';
+  dateMilli: number;
   qty: number;
-  buyValue: number;
-  sellValue: number;
-  tradePnL: number;
+  symbol: string;
+  tradePNL: number;
+  type: string;
+  value: number;
+  positionTradedPrice?: number;
 }
 
 export interface DateEntry {
-  date: string;
-  netBill: number;
+  bill: number;
+  dateMilli: number;
   expense: number;
   grossBill: number;
-  tradePnL: number;
-  netPnL: number;
+  ntpl: number;
+  tpl: number;
   trades: Trade[];
-}
-
-export interface FiscalYearTotals {
-  netBill: number;
-  totalExpenses: number;
-  grossBill: number;
-  tradePnL: number;
-  netPnL: number;
+  name?: string;
 }
 
 export interface FiscalYear {
-  fiscalYear: string;
-  totals: FiscalYearTotals;
-  dates: DateEntry[];
-}
-
-export interface MatchedPosition {
-  symbol: string;
-  qty: number;
-  buyDate: string;
-  buyValue: number;
-  sellDate: string;
-  sellValue: number;
-  tradePnL: number;
-}
-
-export interface AllMatchedPositions {
-  count: number;
-  totalTradePnL: number;
-  positions: MatchedPosition[];
-}
-
-export interface YearlyData {
-  fiscalYear: string;
-  tradePnL: number;
-  netPnL: number;
-}
-
-export interface GrowwPnlSummary {
-  yearsCount: number;
-  totalNetPnL: number;
-  yearlyData: YearlyData[];
-}
-
-export interface DeltaExchangePnlSummary {
-  yearsCount: number;
-  totalNetPnL: number;
-  yearlyData: YearlyData[];
-}
-
-export interface Summary {
-  netBill: number;
-  totalExpenses: number;
   grossBill: number;
-  tradePnL: number;
-  netPnL: number;
+  netBill: number;
+  netTPL: number;
+  title: string;
+  tpl: number;
+  pnl: DateEntry[];
 }
 
-export interface PnLData {
-  summary: Summary;
-  fiscalYears: FiscalYear[];
-  allMatchedPositions: AllMatchedPositions;
-  growwPnlSummary: GrowwPnlSummary;
-  deltaExchangePnlSummary: DeltaExchangePnlSummary;
-}
+// PnLData is now an array of FiscalYear objects
+export type PnLData = FiscalYear[];
