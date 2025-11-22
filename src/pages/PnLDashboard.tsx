@@ -38,7 +38,7 @@ export const PnLDashboard = () => {
       <div className="max-w-7xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
         {/* Header */}
         <div className="bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white p-6 md:p-8 text-center relative">
-          <h1 className="text-2xl md:text-4xl font-bold mb-2">Profit & Loss Statement React</h1>
+          <h1 className="text-2xl md:text-4xl font-bold mb-2">Profit & Loss Statement DUMMY DATA</h1>
           <p className="text-base md:text-lg opacity-90">
             <a
               href="https://linktr.ee/sudokuTrader"
