@@ -33,10 +33,14 @@ export const TradeItem = ({ trade, useFullFormat }: TradeItemProps) => {
         <span className="font-semibold text-sm">{formatCurrency(trade.value, useFullFormat)}</span>
       </div>
       <div className="flex flex-col items-end">
-        <span className="text-[10px] text-gray-500 uppercase">P&L</span>
-        <span className={`font-semibold text-sm ${getPnLClass(trade.tradePNL)}`}>
-          {formatCurrency(trade.tradePNL, useFullFormat)}
-        </span>
+        {!(trade.type.toUpperCase() === 'BUY' && trade.tradePNL === 0) && (
+          <>
+            <span className="text-[10px] text-gray-500 uppercase">P&L</span>
+            <span className={`font-semibold text-sm ${getPnLClass(trade.tradePNL)}`}>
+              {formatCurrency(trade.tradePNL, useFullFormat)}
+            </span>
+          </>
+        )}
       </div>
     </div>
   );

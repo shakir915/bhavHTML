@@ -22,6 +22,10 @@ export const formatCurrency = (amount: number | null | undefined, useFullFormat:
   }
 };
 
+export const getPnLColor = (value: number): string => {
+  return value >= 0 ? 'text-green-500' : 'text-red-500';
+};
+
 export const getPnLClass = (value: number): string => {
-  return value >= 0 ? 'text-green-500 font-bold' : 'text-red-500 font-bold';
+  return `${getPnLColor(value)} font-bold`;
 };

@@ -30,7 +30,7 @@ export const PnLDashboard = () => {
   }, []);
 
 
-  
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#667eea] to-[#764ba2] p-5 md:p-5">
       <div className="max-w-7xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">

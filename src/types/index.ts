@@ -19,13 +19,25 @@ export interface DateEntry {
   name?: string;
 }
 
+export interface SwingTrade {
+  symbol: string;
+  qty: number;
+  buyAtMilli: number;
+  sellAtMilli: number;
+  buyVal: number;
+  sellVal: number;
+  pnl: number;
+}
+
 export interface FiscalYear {
+  expense?: number;
   grossBill: number;
   netBill: number;
   netTPL: number;
   title: string;
   tpl: number;
   pnl: DateEntry[];
+  swings?: SwingTrade[];
 }
 
 // PnLData is now an array of FiscalYear objects
