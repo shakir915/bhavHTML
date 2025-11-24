@@ -78,7 +78,13 @@ export const FiscalYear = ({ fiscalYear, useFullFormat }: FiscalYearProps) => {
                       {entry.name || formatDate(entry.dateMilli)}
                     </td>
                     <td className={`p-3 text-right ${getPnLClass(entry.bill)}`}>{formatCurrency(entry.bill, useFullFormat)}</td>
-                    <td className="p-3 text-right text-red-400 font-bold">{formatCurrency(entry.expense, useFullFormat)}</td>
+                    <td className="p-3 text-right text-red-400 font-bold">
+                      {entry.expense != null
+                        ? formatCurrency(entry.expense, useFullFormat)
+                        : entry.calculatedExpense != null
+                          ? `~${formatCurrency(entry.calculatedExpense, useFullFormat)}`
+                          : formatCurrency(0, useFullFormat)}
+                    </td>
                     <td className={`p-3 text-right ${getPnLColor(entry.grossBill)}`}>{formatCurrency(entry.grossBill, useFullFormat)}</td>
                     <td className={`p-3 text-right ${getPnLColor(entry.tpl)}`}>
                       {formatCurrency(entry.tpl, useFullFormat)}

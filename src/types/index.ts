@@ -11,7 +11,8 @@ export interface Trade {
 export interface DateEntry {
   bill: number;
   dateMilli: number;
-  expense: number;
+  expense?: number;
+  calculatedExpense?: number;
   grossBill: number;
   ntpl: number;
   tpl: number;
