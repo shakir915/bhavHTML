@@ -47,7 +47,7 @@ export const FiscalYear = ({ fiscalYear, useFullFormat }: FiscalYearProps) => {
             )}
             <SummaryItem label="Gross Bill" value={fiscalYear.grossBill} useFullFormat={useFullFormat} />
             <SummaryItem label="Trade P&L" value={fiscalYear.tpl} useFullFormat={useFullFormat} />
-            <SummaryItem label="Net TPL" value={fiscalYear.netTPL} useFullFormat={useFullFormat} />
+            <SummaryItem label="Net P&L" value={fiscalYear.netTPL} useFullFormat={useFullFormat} />
           </div>
           <div className={`w-8 h-8 flex-shrink-0 ${(fiscalYear.pnl && fiscalYear.pnl.length > 0) || (fiscalYear.swings && fiscalYear.swings.length > 0 && (!fiscalYear.pnl || fiscalYear.pnl.length === 0)) ? `expand-icon rounded-full bg-white/20 flex items-center justify-center transition-all hover:bg-white/35 hover:scale-110 ${isExpanded ? 'active' : ''}` : ''}`} />
         </div>
@@ -62,8 +62,8 @@ export const FiscalYear = ({ fiscalYear, useFullFormat }: FiscalYearProps) => {
                 <th className="p-3 text-right font-semibold">Bill</th>
                 <th className="p-3 text-right font-semibold">Expense</th>
                 <th className="p-3 text-right font-semibold">Gross Bill</th>
-                <th className="p-3 text-right font-semibold">TPL</th>
-                <th className="p-3 text-right font-semibold">Net TPL</th>
+                <th className="p-3 text-right font-semibold">Trade P&L</th>
+                <th className="p-3 text-right font-semibold">Net P&L</th>
               </tr>
             </thead>
             <tbody>
